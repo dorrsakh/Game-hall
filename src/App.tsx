@@ -6,13 +6,14 @@ import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
 import GameHeading from "./components/GameHeading";
 import SortSelector from "./components/SortSelector";
+import GenreSelector from "./components/GenreSelector";
 
 export interface GameQuery {
   genreId?: number;
   platformId?: number;
   sortOrder: string;
   searchText: string;
-  }
+}
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -39,7 +40,9 @@ function App() {
         <Show above="lg">
           <GridItem area={"aside"} paddingLeft={"10px"}>
             <GenreList
-              onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })}
+              onSelectedGenre={(genre) =>
+                setGameQuery({ ...gameQuery, genreId: genre.id })
+              }
               selectedGenreId={gameQuery.genreId}
             />
           </GridItem>
@@ -47,16 +50,25 @@ function App() {
         <GridItem area={"main"}>
           <Box paddingLeft={"40px"}>
             <GameHeading gameQuery={gameQuery} />
-            <Flex  gap={"20px"}>
+            <Flex gap={"20px"}>
               <SortSelector
                 selectedSortOrder={gameQuery.sortOrder}
                 onSelectSortOrder={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })}
+                  setGameQuery({ ...gameQuery, sortOrder })
+                }
               />
+              <Show below="lg">
+                <GenreSelector
+                  onSelectGenre={(genre) =>
+                    setGameQuery({ ...gameQuery, genreId: genre.id })
+                  }
+                  selectedGenreId={gameQuery.genreId}
+                />
+              </Show>
               <PlatformSelector
                 selectedPlatformId={gameQuery.platformId}
                 onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platformId: platform.id })
+                  setGameQuery({ ...gameQuery, platformId: platform.id })
                 }
               />
             </Flex>
