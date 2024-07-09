@@ -7,8 +7,8 @@ export interface SortOrder {
 }
 
 interface Props {
-  onSelectSortOrder: (sortOrder: SortOrder) => void;
-  selectedSortOrder: SortOrder | null;
+  onSelectSortOrder: (sortOrder: string) => void;
+  selectedSortOrder: string;
 }
 
 const SortSelector = ({ onSelectSortOrder, selectedSortOrder }: Props) => {
@@ -22,7 +22,7 @@ const SortSelector = ({ onSelectSortOrder, selectedSortOrder }: Props) => {
   ];
 
   const currentSortOrder = sortOrders.find(
-    (order) => order.value === selectedSortOrder?.value
+    (order) => order.value === selectedSortOrder
   );
 
   return (
@@ -33,7 +33,7 @@ const SortSelector = ({ onSelectSortOrder, selectedSortOrder }: Props) => {
       <MenuList>
         {sortOrders.map((order) => (
           <MenuItem
-            onClick={() => onSelectSortOrder(order)}
+            onClick={() => onSelectSortOrder(order.value)}
             key={order.value}
             value={order.value}
           >

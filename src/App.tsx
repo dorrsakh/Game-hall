@@ -4,13 +4,13 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
-import SortSelector, { SortOrder } from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
   genreId?: number;
   platformId?: number;
-  sortOrder: SortOrder | null;
+  sortOrder: string;
   searchText: string;
   }
 
