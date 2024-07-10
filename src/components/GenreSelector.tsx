@@ -2,14 +2,14 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import useGenres, { Genre } from "../hooks/useGenres";
 import useGenre from "../hooks/useGenre";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenreId?: number;
-}
-
-const GenreSelector = ({ onSelectGenre, selectedGenreId }: Props) => {
+const GenreSelector = () => {
   const { data, error } = useGenres();
+
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setSelectedGenre = useGameQueryStore((s) => s.setGenreId);
+
   const selectedGenre = useGenre(selectedGenreId);
   if (error) return null;
   return (
@@ -19,10 +19,7 @@ const GenreSelector = ({ onSelectGenre, selectedGenreId }: Props) => {
       </MenuButton>
       <MenuList>
         {data?.results.map((genre: Genre) => (
-          <MenuItem
-            onClick={() => onSelectGenre(genre)}
-            key={genre.id}
-          >
+          <MenuItem onClick={() => setSelectedGenre(genre.id)} key={genre.id}>
             {genre.name}
           </MenuItem>
         ))}
