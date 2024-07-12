@@ -22,7 +22,7 @@ const GenreList = () => {
     <>
       <List>
         {data?.results.map((genre) => (
-          <ListItem paddingY={"6px"}>
+          <ListItem key={genre.id} paddingY={"6px"}>
             <HStack>
               <Image
                 src={getCroppedImageUrl(genre.image_background)}
