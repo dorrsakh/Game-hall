@@ -1,6 +1,5 @@
-import { Spinner, Image, Text } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 import useTrailers from "../hooks/useTrailers";
-import noImage from "../assets/no-image-placeholder.webp";
 
 interface Props {
   gameId: number;
@@ -19,10 +18,7 @@ const GameTrailer = ({ gameId }: Props) => {
       poster={firstTrailerObj.preview}
     />
   ) : (
-    <>
-      <Text>No Trailer Available...</Text>
-      <Image src={noImage}></Image>
-    </>
+    <></>
   );
 };
 
