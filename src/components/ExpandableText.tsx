@@ -16,7 +16,15 @@ const ExpandableText = ({ children }: Props) => {
   return (
     <Text lineHeight={7} marginTop={2}>
       {summary}
-      <Button marginLeft={2} onClick={() => setExpanded(!expanded)}>
+      <Button
+        height={9}
+        bg="yellow.600"
+        colorScheme="black"
+        _hover={{ bg: "yellow.500", transition: "all 0.3s linear" }}
+        borderRadius={10}
+        marginLeft={1}
+        onClick={() => setExpanded(!expanded)}
+      >
         {expanded ? "Show Less" : "Show More"}
       </Button>
     </Text>

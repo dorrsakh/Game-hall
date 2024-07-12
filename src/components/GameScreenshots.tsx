@@ -13,7 +13,7 @@ if (error) throw error;
 
   return (
     <SimpleGrid columns={{base: 1, lg: 2}}>
-        {data.results.map(file => <Image src={file.image} key={file.id} />)}
+        {data?.results.map(file => <Image src={file.image} key={file.id} />)}
     </SimpleGrid>
   )
 }

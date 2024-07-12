@@ -4,9 +4,9 @@ import { Screenshot } from "../entities/Screenshot"
 
 
 const useScreenshots = (gameId: number) => {
-    const apiClient = new APIClient<Screenshot>(`/games/${gameId}`)
+    const apiClient = new APIClient<Screenshot>(`/games/${gameId}/screenshots`)
     return useQuery({
-        queryKey: ["pictures", gameId],
+        queryKey: ["screenshots", gameId],
         queryFn: apiClient.getAll
     })
 }
